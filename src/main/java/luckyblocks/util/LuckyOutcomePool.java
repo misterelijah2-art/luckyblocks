@@ -303,7 +303,7 @@ public enum LuckyOutcomePool {
             sword.enchant(Enchantments.SHARPNESS, 5);
             sword.enchant(Enchantments.KNOCKBACK, 2);
             sword.enchant(Enchantments.FIRE_ASPECT, 2);
-            sword.enchant(Enchantments.LOOTING, 3);
+            sword.enchant(Enchantments.MOB_LOOTING, 3);
             dropItems(level, pos, sword);
             sendMessage(player, "§6The golden blade!");
         },
@@ -665,7 +665,7 @@ public enum LuckyOutcomePool {
             ItemStack main = player.getMainHandItem();
             if (!main.isEmpty() && main.isEnchantable()) {
                 main.enchant(Enchantments.SHARPNESS, 5);
-                main.enchant(Enchantments.LOOTING, 3);
+                main.enchant(Enchantments.MOB_LOOTING, 3);
                 main.enchant(Enchantments.MENDING, 1);
             } else {
                 dropItems(level, pos, new ItemStack(Items.LAPIS_LAZULI, 64));
@@ -803,13 +803,14 @@ public enum LuckyOutcomePool {
                 level.explode(null, pos.getX()+level.getRandom().nextInt(20)-10, pos.getY(), pos.getZ()+level.getRandom().nextInt(20)-10, 5.0f, Level.ExplosionInteraction.BLOCK);
             sendMessage(player, "§4CHAIN REACTION!");
         },
-        // BAD 2: 10 charged creepers
+        // BAD 2: 10 charged creepers (via NBT powered tag)
         (level, pos, player) -> {
             for (int i = 0; i < 10; i++) {
-                Creeper creeper = (Creeper) EntityType.CREEPER.spawn(level, (CompoundTag)null, null,
+                CompoundTag tag = new CompoundTag();
+                tag.putBoolean("powered", true);
+                EntityType.CREEPER.spawn(level, tag, null,
                     pos.offset(level.getRandom().nextInt(5)-2, 0, level.getRandom().nextInt(5)-2),
                     MobSpawnType.TRIGGERED, false, false);
-                if (creeper != null) creeper.setPowered(true);
             }
             sendMessage(player, "§4CHARGED CREEPER SWARM!");
         },
@@ -844,7 +845,7 @@ public enum LuckyOutcomePool {
         (level, pos, player) -> {
             giveEffect(player, new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 2400, 10));
             giveEffect(player, new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 2400, 4));
-            giveEffect(player, new MobEffectInstance(MobEffects.JUMP, 2400, 128)); // negative jump
+            giveEffect(player, new MobEffectInstance(MobEffects.JUMP, 2400, 128));
             sendMessage(player, "§4Redstone lockdown!");
         },
         // BAD 8: random repeated explosions for 10 seconds (10 small blasts)
@@ -1047,9 +1048,9 @@ public enum LuckyOutcomePool {
         // GOOD 8: full weapon kit — sword bow crossbow trident axe all maxed
         (level, pos, player) -> {
             ItemStack sword = new ItemStack(Items.NETHERITE_SWORD);
-            sword.enchant(Enchantments.SHARPNESS, 5); sword.enchant(Enchantments.LOOTING, 3);
+            sword.enchant(Enchantments.SHARPNESS, 5); sword.enchant(Enchantments.MOB_LOOTING, 3);
             ItemStack axe = new ItemStack(Items.NETHERITE_AXE);
-            axe.enchant(Enchantments.SHARPNESS, 5); axe.enchant(Enchantments.EFFICIENCY, 5);
+            axe.enchant(Enchantments.SHARPNESS, 5); axe.enchant(Enchantments.BLOCK_EFFICIENCY, 5);
             dropItems(level, pos, sword); dropItems(level, pos, axe);
             dropItems(level, pos, new ItemStack(Items.TOTEM_OF_UNDYING, 2));
             sendMessage(player, "§dCrystal armory!");
