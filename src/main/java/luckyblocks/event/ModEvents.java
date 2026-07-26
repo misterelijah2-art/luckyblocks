@@ -7,5 +7,6 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 public class ModEvents {
     public static void register() {
         FabricDefaultAttributeRegistry.register(ModEntities.CURSED_MINER, CursedMinerEntity.createAttributes());
+        OreLootHandler.register();
     }
 }
