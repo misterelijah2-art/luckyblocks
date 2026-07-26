@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "luckyblocks:block/gold_lucky_block"
+    "all": "minecraft:block/gold_ore"
   }
 }

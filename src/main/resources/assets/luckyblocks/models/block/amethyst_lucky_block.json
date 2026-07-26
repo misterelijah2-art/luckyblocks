@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "luckyblocks:block/amethyst_lucky_block"
+    "all": "minecraft:block/amethyst_block"
   }
 }
