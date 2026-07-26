@@ -1,22 +1,21 @@
 package luckyblocks.util;
 
-import luckyblocks.registry.ModEntities;
 import luckyblocks.registry.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.Creeper;
-import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseFireBlock;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.RandomSource;
 
 import java.util.List;
@@ -30,7 +29,7 @@ public enum LuckyOutcomePool {
         (level, pos, player) -> giveEffect(player, new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1200, 0)),
         (level, pos, player) -> dropItems(level, pos, new ItemStack(Items.CHARCOAL, 24)),
         // Bad
-        (level, pos, player) -> level.setFireTick(pos, 20),
+        (level, pos, player) -> setFire(level, pos.above()),
         (level, pos, player) -> player.hurt(level.damageSources().inFire(), 4.0f),
         (level, pos, player) -> spawnMob(level, pos, EntityType.BLAZE),
         (level, pos, player) -> dropItems(level, pos, new ItemStack(ModItems.CURSED_SHARD, 1))
@@ -162,7 +161,13 @@ public enum LuckyOutcomePool {
     }
 
     private static void spawnMob(ServerLevel level, BlockPos pos, EntityType<?> type) {
-        type.spawn(level, null, null, pos.above(), MobSpawnType.TRIGGERED, false, false);
+        type.spawn(level, (CompoundTag) null, null, pos.above(), MobSpawnType.TRIGGERED, false, false);
+    }
+
+    private static void setFire(ServerLevel level, BlockPos pos) {
+        if (level.isEmptyBlock(pos)) {
+            level.setBlockAndUpdate(pos, BaseFireBlock.getState(level, pos));
+        }
     }
 
     private static void strikeLightning(ServerLevel level, BlockPos pos) {
