@@ -1,0 +1,16 @@
+{
+  "block.luckyblocks.coal_lucky_block": "Coal Lucky Block",
+  "block.luckyblocks.iron_lucky_block": "Iron Lucky Block",
+  "block.luckyblocks.gold_lucky_block": "Gold Lucky Block",
+  "block.luckyblocks.diamond_lucky_block": "Diamond Lucky Block",
+  "block.luckyblocks.emerald_lucky_block": "Emerald Lucky Block",
+  "block.luckyblocks.lapis_lucky_block": "Lapis Lucky Block",
+  "block.luckyblocks.redstone_lucky_block": "Redstone Lucky Block",
+  "block.luckyblocks.copper_lucky_block": "Copper Lucky Block",
+  "block.luckyblocks.amethyst_lucky_block": "Amethyst Lucky Block",
+  "item.luckyblocks.lucky_coin": "Lucky Coin",
+  "item.luckyblocks.cursed_shard": "Cursed Shard",
+  "item.luckyblocks.blessed_ingot": "Blessed Ingot",
+  "entity.luckyblocks.lucky_slime": "Lucky Slime",
+  "entity.luckyblocks.cursed_miner": "Cursed Miner"
+}

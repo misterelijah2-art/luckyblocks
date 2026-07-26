@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "luckyblocks:block/redstone_lucky_block" }
+  }
+}

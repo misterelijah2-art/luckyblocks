@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "luckyblocks:block/iron_lucky_block" }
+  }
+}
