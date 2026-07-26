@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LLL",
+    "L#L",
+    "LLL"
+  ],
+  "key": {
+    "L": { "item": "minecraft:lapis_lazuli" },
+    "#": { "item": "luckyblocks:lucky_coin" }
+  },
+  "result": { "item": "luckyblocks:lapis_lucky_block", "count": 1 }
+}

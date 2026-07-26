@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RRR",
+    "R#R",
+    "RRR"
+  ],
+  "key": {
+    "R": { "item": "minecraft:redstone" },
+    "#": { "item": "luckyblocks:lucky_coin" }
+  },
+  "result": { "item": "luckyblocks:redstone_lucky_block", "count": 1 }
+}

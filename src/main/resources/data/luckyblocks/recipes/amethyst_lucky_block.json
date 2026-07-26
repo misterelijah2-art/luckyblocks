@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "A#A",
+    "AAA"
+  ],
+  "key": {
+    "A": { "item": "minecraft:amethyst_shard" },
+    "#": { "item": "luckyblocks:lucky_coin" }
+  },
+  "result": { "item": "luckyblocks:amethyst_lucky_block", "count": 1 }
+}

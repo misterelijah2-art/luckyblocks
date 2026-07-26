@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "I#I",
+    "III"
+  ],
+  "key": {
+    "I": { "item": "minecraft:iron_ingot" },
+    "#": { "item": "luckyblocks:lucky_coin" }
+  },
+  "result": { "item": "luckyblocks:iron_lucky_block", "count": 1 }
+}
